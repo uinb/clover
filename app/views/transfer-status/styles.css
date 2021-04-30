@@ -1,0 +1,173 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-container {
+    display: flex;
+    padding: 20px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.left-panel {
+    width: 50px;
+    margin: 0 10px 0 0;
+    height: 430px;
+    overflow-y: scroll;
+}
+
+.right-panel {
+    flex: 1;
+    height: 430px;
+    overflow-y: scroll;
+}
+
+.left-panel::-webkit-scrollbar, .right-panel::-webkit-scrollbar { width: 0 !important }
+.left-panel, .right-panel { overflow: -moz-scrollbars-none; }
+
+.split {
+    width: 30px;
+    height: 1px;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.05);
+    margin: 10px 0;
+}
+
+.split-select {
+    background-color: #FB822A;
+}
+
+.can-click {
+    cursor: pointer;
+}
+
+.card-logo {
+    margin-right: 10px;
+}
+
+.footer {
+    align-self: center;
+    margin-top: 22px;
+    display: flex;
+    cursor: pointer;
+}
+
+.close {
+    color: #000000;
+    margin-left: 15px;
+    font-family: "Roboto-Regular";
+    font-size: 16px;
+}
+
+.manage-account-btn {
+    background-color: #ffffff!important;
+    width: 324px;
+    height: 40px;
+    margin: 0 18px!important;
+}
+
+.setting-list-wrap {
+    margin-top: 20px;
+}
+
+.setting-list-item {
+    cursor: pointer;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    width: 100%;
+    height: 63px;
+    line-height: 63px;
+    padding: 0 18px;
+}
+
+.setting-list-item:hover {
+    background: #f2f2f2;
+}
+
+.setting-list-item:last-child {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.setting-list-left {
+    float: left;
+    font-size: 14px;
+}
+
+.setting-list-right {
+    float: right;
+}
+
+.setting-list-right img {
+    width: 12px;
+    height: 12px;
+    margin-left: 15px;
+}
+
+.transfer-status-wrapper {
+    text-align: center;
+}
+
+.transfer-status {
+    font-size: 24px;
+    margin: 15px 0 10px 0;
+    font-family: Inter-Bold;
+}
+
+.transfer-status-wrapper span {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.transfer-finished-color {
+    color: #4ED09B;
+}
+
+.transfer-pending-color {
+    color: #F5A623;
+}
+
+.transfer-failed-color {
+    color: #F37565;
+}
+
+.transfer-Detail-wrapper {
+    padding: 30px 18px 15px 18px;
+}
+
+.transfer-detail-item {
+    padding: 20px 0 10px 0;
+}
+
+.transfer-detail-item span {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.transfer-detail-item div {
+    float: right;
+    word-break: break-all;
+    width: 260px;
+    text-align: right;
+    font-size: 12px;
+}
+
+.transfer-detail-amount {
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.transfer-detail-amount div {
+    font-family: Inter-Bold;
+    font-size: 14px;
+}
+
+.transfer-detail-hash {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    margin-top: 10px;
+}
+
+.transfer-on-subscan {
+    color: #3E85E9;
+    font-size: 14px;
+    font-family: Inter-Bold;
+}

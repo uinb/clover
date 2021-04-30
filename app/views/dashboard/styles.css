@@ -1,0 +1,129 @@
+.asset-container {
+  margin: 5px 15px 15px 15px;
+}
+
+.wallet-container {
+  border-radius: 5px;
+  background: linear-gradient(94.54deg, #FF8212 0%, #ED4454 100%);
+  display: flex;
+  flex-direction: row;
+  color: rgba(255, 255, 255, 1);
+  margin: 5px 15px 20px 15px;
+  padding: 12px 15px 15px 15px;
+}
+
+.transaction-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+.staking-gov-btn-container {
+  margin: 15px;
+}
+
+.staking-btn {
+  background-color: #ffffff!important;
+  width: 160px;
+  height: 40px;
+  margin-right: 10px!important;
+}
+
+.governance-btn {
+  background-color: #ffffff!important;
+  width: 160px;
+  height: 40px;
+}
+
+.staking-btn:hover, .governance-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1)!important;
+}
+
+.assets-list-wrap {
+  margin-top: 15px;
+}
+
+.assets-list-title {
+  margin-left: 18px;
+  margin-top: 30px;
+  font-size: 16px;
+  font-family: Inter-Bold;
+}
+
+.assets-list-item {
+  cursor: pointer;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  width: 100%;
+  height: 63px;
+  padding: 0 18px;
+}
+
+.assets-list-item:hover {
+  background: #f2f2f2;
+}
+
+.assets-list-item:last-child {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.asset-list-left {
+  float: left;
+}
+
+.asset-list-left img, .asset-list-left span, .asset-list-right img, .asset-list-right span {
+  vertical-align: middle;
+  line-height: 63px;
+}
+
+.asset-list-left span {
+  font-family: Inter-Bold;
+}
+
+.asset-list-left img {
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  background: white;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.asset-list-right {
+  float: right;
+}
+
+.asset-list-right span {
+  line-height: 63px;
+}
+
+.asset-list-right img {
+  width: 12px;
+  height: 12px;
+  margin-left: 15px;
+}
+
+.dashboard-button-wrap {
+  position: absolute;
+  top: 535px;
+  left: 0;
+  height: 60px;
+  line-height: 60px;
+  padding: 0 20px;
+  align-self: center;
+  justify-content: center;
+  display: flex;
+}
+
+.assets-btn {
+  font-size: 14px;
+  height: 45px;
+  border: 1px solid #FB822A !important;
+  border-radius: 26px !important;
+  width: 152px;
+  color: #FB822A!important;
+  font-family: Inter-Bold !important;
+}
+
+.assets-btn:hover {
+  background: rgba(255, 205, 168, 0.35)!important;
+}

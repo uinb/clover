@@ -1,0 +1,28 @@
+.select-asset-wrapper, .select-address-wrapper {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.select-asset-title, .select-address-title {
+    padding: 15px 18px 14px 18px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.select-asset-item-currency-type {
+    font-family: Inter-Bold;
+    font-size: 12px;
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.select-asset-item-icon {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.select-asset-item-amount {
+    position: absolute;
+    right: 18px;
+    top: 16px;
+}

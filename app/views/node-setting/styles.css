@@ -1,0 +1,12 @@
+.node-list-wrapper {
+    padding: 15px 18px;
+    height: 415px!important;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.node-address-input {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 18px 18px 0 18px;
+}

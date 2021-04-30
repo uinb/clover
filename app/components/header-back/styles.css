@@ -1,0 +1,20 @@
+.header-wrapper {
+    padding: 20px;
+    width: 100%;
+}
+
+.header-back-btn {
+    float: left;
+    cursor: pointer;
+}
+
+.header-back-btn img {
+    vertical-align: middle;
+}
+
+.header-title {
+    font-size: 15px;
+    font-family: Inter-Bold;
+    text-align: center;
+    vertical-align: middle;
+}
