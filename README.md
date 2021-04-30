@@ -1,8 +1,6 @@
 # FUSOTAO Wallet
 
-FUSOTAO Wallet is a wallet for for [Polkadot blockchain.](https://polkadot.network/)
-
-FUSOTAO Wallet is currently a work in progress, so changes will occur.
+FUSOTAO Wallet is a wallet for [FUSOTAO](https://github.com/uinb/fusotao)
 
 
 ## Prerequisites
