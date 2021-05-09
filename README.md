@@ -1,7 +1,6 @@
-# FUSOTAO Wallet
+# TokenKeeper
 
-FUSOTAO Wallet is a wallet for [FUSOTAO](https://github.com/uinb/fusotao)
-
+TokenKeeper is a wallet browser extension for [FUSOTAO](https://github.com/uinb/fusotao) and other blockchains(in the future).
 
 ## Prerequisites
 
@@ -10,31 +9,31 @@ FUSOTAO Wallet is a wallet for [FUSOTAO](https://github.com/uinb/fusotao)
 
 ## Get It
 
-Once published FUSOTAO Wallet will be installable from the Chrome Web Store. Until then, it can be run via yarn by cloning this repo. Unpacked builds will be made available at [https://github.com/uinb/fusotao-wallet](https://github.com/uinb/fusotao-wallet) shortly.
+Once published, TokenKeeper would be available in the Chrome and Firefox Web Store. Until then, it can be run via yarn by cloning this repo. Unpacked builds will be made available at [https://github.com/uinb/token-keeper](https://github.com/uinb/token-keeper) shortly.
 
 ### Installation
 
 Execute the following to clone, install dependencies, and run a development server:
 
-    git clone https://github.com/uinb/fusotao-wallet.git
-    cd fusotao-wallet
+```
+    git clone https://github.com/uinb/token-keeper.git
+    cd token-keeper
     yarn install
     yarn run dev
+```
 
-Once running Chrome:
+Launch Chrome and do the following steps:
 
 - Go to chrome://extensions
 - Enable 'Developer Mode' (top right corner of window)
-- Click "Load Unpacked" and select the fusotao-wallet/dev/chrome directory
-- Navigate to : https://localhost:3001 and accept the https connection
+- Click "Load Unpacked" and select the token-keeper/dev/chrome directory
+- Navigate to: https://localhost:3001 and accept the https connection
 
-The fusotao Wallet icon should show up in your Chrome toolbar.
+The TokenKeeper icon should show up in your Chrome toolbar.
 
-Once running Firefox:
+If you prefer Firefox, refer to the following steps:
 
 - Go to about:debugging#/runtime/this-firefox
 - Click 'Load Temporary Addon' 
-- select the fusotao-wallet/dev/firefox directory
+- select the token-keeper/dev/firefox directory
 - Navigate to : https://localhost:3001 and accept the https connection
-
-The fusotao Wallet icon should show up in your Firefox toolbar.
