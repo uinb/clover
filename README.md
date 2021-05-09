@@ -16,10 +16,10 @@ Once published, TokenKeeper would be available in the Chrome and Firefox Web Sto
 Execute the following to clone, install dependencies, and run a development server:
 
 ```
-    git clone https://github.com/uinb/token-keeper.git
-    cd token-keeper
-    yarn install
-    yarn run dev
+git clone https://github.com/uinb/token-keeper.git
+cd token-keeper
+yarn install
+yarn run dev
 ```
 
 Launch Chrome and do the following steps:
