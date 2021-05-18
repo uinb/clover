@@ -18,6 +18,10 @@ export const walletTypes = {
     misc_frozen: 'Balance',
     fee_frozen: 'Balance',
   },
+  TokenAccountData: {
+    free: 'Balance',
+    reserved: 'Balance',
+  },
   Dominator: {
     total_pledged: 'Balance',
     total_hosted: 'Balance',

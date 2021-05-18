@@ -15,15 +15,12 @@
     "32": "img/icon-32.png",
     "128": "img/icon-128.png"
   },
-  "web_accessible_resources": [
-    "inject.html",
-    "content-script.js",
-    "/js/inPageScript.bundle.js",
-    "js/inPageScript.bundle.js"
-  ],
   "permissions": [
     "notifications",
     "storage",
+    "tabs",
+    "management",
+    "activeTab",
     "https://*/*",
     "http://*/*",
     "wss://*/*",

@@ -10,4 +10,5 @@ html
       }
   body
     #root
+    script(src=env == 'prod' ? '/js/contentScript.bundle.js' : null)
     script(src=env == 'prod' ? '/js/mainapp.bundle.js' : 'https://localhost:3001/js/mainapp.bundle.js')
