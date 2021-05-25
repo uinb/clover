@@ -13,3 +13,4 @@ update.xml
 .vscode
 .nyc_output
 .idea
+dist
