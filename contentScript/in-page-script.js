@@ -1,9 +1,10 @@
-import { injectExtension } from '@polkadot/extension-inject';
-import { EventEmitter } from 'events';
-import { resolveRequest } from './messaging/in-page';
-import * as RequestTypes from '../lib/constants/request-types';
-import AppConfig from '../lib/constants/config';
+import { injectExtension } from "@polkadot/extension-inject";
+import { EventEmitter } from "events";
+import { resolveRequest } from "./messaging/in-page";
+import * as RequestTypes from "../lib/constants/request-types";
+import AppConfig from "../lib/constants/config";
 
+console.log("xixixixi", AppConfig);
 const metadata = {
   url: window.location.host,
 };
@@ -12,18 +13,23 @@ const getAccounts = async () => {
   return result;
 };
 
-const signTransaction = async payload => {
+const signTransaction = async (payload) => {
   const result = await resolveRequest(RequestTypes.SEND, payload, metadata);
   return result;
 };
 
 // eslint-disable-next-line no-unused-vars
-const signMessage = async payload => {
-  const result = await resolveRequest(RequestTypes.SIGN_MESSAGE, payload, metadata);
+const signMessage = async (payload) => {
+  const result = await resolveRequest(
+    RequestTypes.SIGN_MESSAGE,
+    payload,
+    metadata
+  );
   return result;
 };
 
-const enable = async origin => {
+const enable = async (origin) => {
+  console.log("enable", origin);
   const metadata = {
     origin,
     url: window.location.host,
@@ -38,17 +44,17 @@ const enable = async origin => {
     },
     name: AppConfig.name,
     signer: {
-      signPayload: async payload => {
+      signPayload: async (payload) => {
         const res = await signTransaction(payload);
         return res;
       },
-      signRaw: async payload => {
+      signRaw: async (payload) => {
         const res = await signMessage(payload);
         return res;
       },
     },
     sign: {
-      signMessage: async payload => {
+      signMessage: async (payload) => {
         const res = await signMessage(payload);
         return res;
       },
@@ -66,29 +72,40 @@ class FusoWalletProvider extends EventEmitter {
     super();
     this.request = this.request.bind(this);
     this.send = this.send.bind(this);
-    this.selectedAddress = '0xe6206c7f064c7d77c6d8e3ed8601c9aa435419ce';
-    this.networkVersion = '1337';
-    this.chainId = '0x539';
+    this.selectedAddress = "0xe6206c7f064c7d77c6d8e3ed8601c9aa435419ce";
+    this.networkVersion = "1337";
+    this.chainId = "0x539";
     this.setMaxListeners(100);
   }
 
   async request(args) {
-    const result = await resolveRequest(RequestTypes.WEB3_REQUEST, args, metadata);
+    const result = await resolveRequest(
+      RequestTypes.WEB3_REQUEST,
+      args,
+      metadata
+    );
     return result;
   }
 
   async send(methodOrPayload, callbackOrArgs) {
-    if (typeof methodOrPayload === 'object' && typeof callbackOrArgs === 'function') {
+    if (
+      typeof methodOrPayload === "object" &&
+      typeof callbackOrArgs === "function"
+    ) {
       try {
-        const result = await resolveRequest(RequestTypes.WEB3_REQUEST, methodOrPayload, metadata);
-        if (methodOrPayload.method === 'eth_getTransactionReceipt') {
+        const result = await resolveRequest(
+          RequestTypes.WEB3_REQUEST,
+          methodOrPayload,
+          metadata
+        );
+        if (methodOrPayload.method === "eth_getTransactionReceipt") {
           const r = result.result;
           // eslint-disable-next-line no-underscore-dangle
           r._sta = r.status;
           if (r.status) {
-            r.status = '0x1';
+            r.status = "0x1";
           } else {
-            r.status = '0x0';
+            r.status = "0x0";
           }
         }
         callbackOrArgs(undefined, result);
@@ -103,25 +120,25 @@ class FusoWalletProvider extends EventEmitter {
   sendSync(payload) {
     let result;
     switch (payload.method) {
-      case 'eth_accounts':
+      case "eth_accounts":
         result = this.selectedAddress ? [this.selectedAddress] : [];
         break;
 
-      case 'eth_coinbase':
+      case "eth_coinbase":
         result = this.selectedAddress || null;
         break;
 
-      case 'eth_uninstallFilter':
+      case "eth_uninstallFilter":
         resolveRequest(RequestTypes.WEB3_REQUEST, payload, metadata);
         result = true;
         break;
 
-      case 'net_version':
+      case "net_version":
         result = this.networkVersion || null;
         break;
 
       default:
-        throw new Error('unsupported method');
+        throw new Error("unsupported method");
     }
 
     return {

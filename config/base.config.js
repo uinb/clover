@@ -52,7 +52,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "background.html",
       template: "public/index.html",
-      chunks: ["background", "inPageScript", "contentScript"],
+      chunks: ["background"],
     }),
   ],
   module: {

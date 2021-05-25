@@ -4,7 +4,7 @@ const webpack = require("webpack");
 const common = require("./base.config");
 module.exports = merge(common, {
   mode: "development",
-  devtool: "inline-source-map",
+  // devtool: "inline-source-map",
   watch: true,
   // devServer: {
   //   contentBase: path.join(__dirname, "dist"),

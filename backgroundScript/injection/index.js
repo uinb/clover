@@ -11,6 +11,7 @@ function isInjected(tabId) {
   return new Promise((resolve, reject) => {
     try {
       extension.tabs.executeScript(tabId, injectCode, (result) => {
+        console.log(tabId, result);
         resolve(result);
       });
     } catch (e) {
@@ -20,27 +21,11 @@ function isInjected(tabId) {
 }
 
 function loadScript(name, tabId, cb) {
-  if (process.env.NODE_ENV === "production") {
-    extension.tabs.executeScript(
-      tabId,
-      { file: `/js/${name}.js`, runAt: "document_start" },
-      cb
-    );
-  } else {
-    // dev: async fetch bundle
-    fetch(`https://localhost:3001/js/${name}.js`)
-      .then((res) => res.text())
-      .then((fetchRes) => {
-        extension.tabs.executeScript(
-          tabId,
-          {
-            code: fetchRes,
-            runAt: "document_start",
-          },
-          cb
-        );
-      });
-  }
+  extension.tabs.executeScript(
+    tabId,
+    { file: `${name}.js`, runAt: "document_start" },
+    cb
+  );
 }
 
 const arrowURLs = [
@@ -48,17 +33,19 @@ const arrowURLs = [
 ];
 
 extension.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-  if (tab) {
-    if (tab.url) {
-      if (
-        changeInfo.status !== "loading" ||
-        !tab.url.match(arrowURLs.join("|"))
-      ) {
-        return;
-      }
-    }
-  }
+  console.log("tab update");
+  // if (tab) {
+  //   if (tab.url) {
+  //     if (
+  //       changeInfo.status !== "loading" ||
+  //       !tab.url.match(arrowURLs.join("|"))
+  //     ) {
+  //       return;
+  //     }
+  //   }
+  // }
   const result = await isInjected(tabId);
+  console.log("result", result);
   if (extension.runtime.lastError || result[0]) return;
   /*eslint-disable no-console*/
   loadScript("contentScript", tabId, () =>

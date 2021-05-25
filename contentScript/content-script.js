@@ -8,10 +8,5 @@ function injectScript(filePath) {
   script.setAttribute("src", filePath);
   document.documentElement.appendChild(script);
 }
-
-if (process.env.NODE_ENV === "production") {
-  const url = extension.extension.getURL("js/inPageScript.js");
-  injectScript(url);
-} else {
-  injectScript("https://localhost:3001/js/inPageScript.js");
-}
+const url = extension.extension.getURL("inPageScript.js");
+injectScript(url);

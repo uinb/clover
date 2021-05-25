@@ -1,15 +1,15 @@
-import extension from 'extensionizer';
-import * as ResponseService from '../services/response-service';
-import * as MessageTypes from '../../lib/constants/message-types';
-import * as ExtensionApi from '../../lib/services/extension/extension';
-import * as RuntimeApi from '../../lib/services/extension/runtime';
-import * as Web3ResponseService from '../services/web3-response-service';
+import extension from "extensionizer";
+import * as ResponseService from "../services/response-service";
+import * as MessageTypes from "../../lib/constants/message-types";
+import * as ExtensionApi from "../../lib/services/extension/extension";
+import * as RuntimeApi from "../../lib/services/extension/runtime";
+import * as Web3ResponseService from "../services/web3-response-service";
 
 extension.runtime.onMessage.addListener((request, sender, sendResponse) => {
   // Handle Messages from content
   const { url: senderURL } = sender;
-  const popupURL = ExtensionApi.getURL('popup.html');
-  const windowURL = ExtensionApi.getURL('window.html');
+  const popupURL = ExtensionApi.getURL("popup.html");
+  const windowURL = ExtensionApi.getURL("window.html");
   const { id: senderId } = sender;
   const extensionId = RuntimeApi.getID();
 
@@ -19,7 +19,11 @@ extension.runtime.onMessage.addListener((request, sender, sendResponse) => {
       try {
         switch (request.type) {
           case MessageTypes.BG_DAPP_TXN_VALIDATE:
-            ResponseService.handleDAppValidateTransaction(request, sender, sendResponse);
+            ResponseService.handleDAppValidateTransaction(
+              request,
+              sender,
+              sendResponse
+            );
             break;
           case MessageTypes.BG_DAPP_AUTHORIZE:
             ResponseService.handleAuthorizeDApp(request, sender, sendResponse);
