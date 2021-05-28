@@ -11,7 +11,6 @@ function isInjected(tabId) {
   return new Promise((resolve, reject) => {
     try {
       extension.tabs.executeScript(tabId, injectCode, (result) => {
-        console.log(tabId, result);
         resolve(result);
       });
     } catch (e) {
@@ -33,7 +32,6 @@ const arrowURLs = [
 ];
 
 extension.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-  console.log("tab update");
   // if (tab) {
   //   if (tab.url) {
   //     if (
@@ -45,7 +43,6 @@ extension.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   //   }
   // }
   const result = await isInjected(tabId);
-  console.log("result", result);
   if (extension.runtime.lastError || result[0]) return;
   /*eslint-disable no-console*/
   loadScript("contentScript", tabId, () =>

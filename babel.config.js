@@ -7,7 +7,7 @@ module.exports = {
         targets: {
           edge: "17",
           firefox: "60",
-          chrome: "67",
+          chrome: "79",
           safari: "11.1",
         },
         useBuiltIns: "usage",

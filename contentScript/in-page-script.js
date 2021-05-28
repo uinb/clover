@@ -4,7 +4,6 @@ import { resolveRequest } from "./messaging/in-page";
 import * as RequestTypes from "../lib/constants/request-types";
 import AppConfig from "../lib/constants/config";
 
-console.log("xixixixi", AppConfig);
 const metadata = {
   url: window.location.host,
 };
@@ -29,7 +28,6 @@ const signMessage = async (payload) => {
 };
 
 const enable = async (origin) => {
-  console.log("enable", origin);
   const metadata = {
     origin,
     url: window.location.host,

@@ -54,6 +54,11 @@ module.exports = {
       template: "public/index.html",
       chunks: ["background"],
     }),
+    new HtmlWebpackPlugin({
+      filename: "window.html",
+      template: "public/index.html",
+      chunks: ["mainapp"],
+    }),
   ],
   module: {
     rules: [

@@ -12,7 +12,6 @@ extension.runtime.onMessage.addListener((request, sender, sendResponse) => {
   const windowURL = ExtensionApi.getURL("window.html");
   const { id: senderId } = sender;
   const extensionId = RuntimeApi.getID();
-
   // console.log('bg content:', request);
   if (senderId === extensionId) {
     if (senderURL !== popupURL && senderURL !== windowURL) {
