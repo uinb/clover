@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Tooltip from '@material-ui/core/Tooltip';
-import withStyles from '@material-ui/core/styles/withStyles';
-import FusoPassword from '../../components/common/password/fuso-password';
-import FooterButton from '../../components/common/footer-button';
-import Logo from '../../images/logo.svg';
-import Error from '../../images/error.svg';
-import './styles.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Tooltip from "@material-ui/core/Tooltip";
+import withStyles from "@material-ui/core/styles/withStyles";
+import FusoPassword from "../../components/common/password/fuso-password";
+import FooterButton from "../../components/common/footer-button";
+import Logo from "../../images/logo.svg";
+import Error from "../../images/error.svg";
+import "./styles.css";
 
 export default class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      password: '',
+      password: "",
       isError: false,
       disabled: true,
-      label: 'Password',
-      errorText: '',
+      label: "Password",
+      errorText: "",
     };
   }
 
@@ -35,16 +35,16 @@ export default class SignIn extends Component {
     }
   }
 
-  handleOnChange = prop => e => {
+  handleOnChange = (prop) => (e) => {
     const { value } = e.target;
     this.setState({
       [prop]: value,
-      disabled: value === '',
+      disabled: value === "",
     });
   };
 
-  handleOnEnterKeyPress = e => {
-    if (e.key === 'Enter') {
+  handleOnEnterKeyPress = (e) => {
+    if (e.key === "Enter") {
       this.handleClick();
     }
   };
@@ -56,19 +56,17 @@ export default class SignIn extends Component {
   };
 
   render() {
-    const {
-      isError, password, label, errorText, disabled
-    } = this.state;
+    const { isError, password, label, errorText, disabled } = this.state;
     const FusoTooltip = withStyles(() => ({
       tooltip: {
-        backgroundColor: 'primary',
-        color: 'white',
+        backgroundColor: "primary",
+        color: "white",
         maxWidth: 220,
-        fontSize: '10px',
-        padding: '10px 15px',
-        lineHeight: '20px',
-        fontFamily: 'Inter-Regular',
-        marginTop: '5px',
+        fontSize: "10px",
+        padding: "10px 15px",
+        lineHeight: "20px",
+        fontFamily: "Inter-Regular",
+        marginTop: "5px",
       },
     }))(Tooltip);
     return (
@@ -83,10 +81,9 @@ export default class SignIn extends Component {
             password={password}
             placeholder="Password"
             onKeyPress={this.handleOnEnterKeyPress}
-            label={label}
           />
           <div className="msg-container">
-            <div className={isError ? 'error-msg' : 'hidden'}>
+            <div className={isError ? "error-msg" : "hidden"}>
               <img src={Error} alt="error" width="14" />
               <span>{errorText}</span>
             </div>
@@ -97,7 +94,11 @@ export default class SignIn extends Component {
               <span className="forgot">Forgot password?</span>
             </FusoTooltip>
           </div>
-          <FooterButton onClick={this.handleClick} disabled={disabled} name="unlock" />
+          <FooterButton
+            onClick={this.handleClick}
+            disabled={disabled}
+            name="unlock"
+          />
         </div>
       </div>
     );

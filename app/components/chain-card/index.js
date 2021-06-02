@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { IsEmpty } from 'react-lodash';
-import './styles.css';
-import { getChainCardStyle } from '../../utils/chain';
-import { shortenAddress } from '../../services/wallet-service';
+import React, { Component } from "react";
+import { IsEmpty } from "react-lodash";
+import "./styles.css";
+import { getChainCardStyle } from "../../utils/chain";
+import { shortenAddress } from "../../services/wallet-service";
 
 export default class ChainCard extends Component {
   render() {

@@ -102,10 +102,10 @@ export const authorizeDApp = async (data, sender) => {
     account: undefined,
   };
 
-  const { accounts } = await AccountService.getAccounts();
-  if (accounts.length === 0) {
-    throw new Error("No account found");
-  }
+  // const { accounts } = await AccountService.getAccounts();
+  // if (accounts.length === 0) {
+  //   throw new Error("No account found");
+  // }
 
   if (!isDAppAuthorized) {
     await queueDAppRequests(data, sender, result);

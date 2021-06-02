@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import withStyles from '@material-ui/core/styles/withStyles';
-import FontRegular from '../fonts/font-regular';
-import { styles } from './styles';
+import React, { Component } from "react";
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import withStyles from "@material-ui/core/styles/withStyles";
+import FontRegular from "../fonts/font-regular";
+import { styles } from "./styles";
 
 class FusoExpansionPanel extends Component {
   state = {
@@ -21,17 +23,15 @@ class FusoExpansionPanel extends Component {
 
   render() {
     const { expanded } = this.state;
-    const {
-      classes, title, children, ...otherProps
-    } = this.props;
+    const { classes, title, children, ...otherProps } = this.props;
     return (
-      <ExpansionPanel
+      <Accordion
         expanded={expanded}
         onChange={this.handleChange}
         classes={{ root: classes.root, expanded: classes.panelExpanded }}
         {...otherProps}
       >
-        <ExpansionPanelSummary
+        <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           classes={{
             content: classes.content,
@@ -40,14 +40,19 @@ class FusoExpansionPanel extends Component {
             expandIcon: classes.expandIcon,
           }}
           // eslint-disable-next-line react/no-children-prop
-          children={<FontRegular text={title} style={{ fontSize: 16, fontWeight: 'normal' }} />}
+          children={
+            <FontRegular
+              text={title}
+              style={{ fontSize: 16, fontWeight: "normal" }}
+            />
+          }
         />
-        <ExpansionPanelDetails
+        <AccordionDetails
           classes={{ root: classes.detailsRoot }}
           // eslint-disable-next-line react/no-children-prop
           children={children}
         />
-      </ExpansionPanel>
+      </Accordion>
     );
   }
 }
