@@ -7,6 +7,7 @@ class ButtonCustom extends Component {
   static propTypes = {
     disabled: PropTypes.bool,
     onClick: PropTypes.func.isRequired,
+    className: PropTypes.string,
   };
 
   static defaultProps = {
@@ -14,20 +15,17 @@ class ButtonCustom extends Component {
   };
 
   render() {
-    const { ...otherProps } = this.props;
+    const { className, ...otherProps } = this.props;
     const ButtonCustomDom = styled(Button)`
+      margin: 0 10px;
       font-size: 14px;
       font-family: "Inter-Bold";
       font-style: normal;
       border: ${this.props.border ? this.props.border : "none"};
       width: ${this.props.width ? this.props.width : "320px"};
-      background: ${this.props.background
-        ? this.props.background
-        : "linear-gradient(94.54deg, #FF8212 0%, #ED4454 100%)"};
-      color: ${this.props.color ? this.props.color : "#FFFFFF"};
     `;
     return (
-      <div>
+      <div className={className}>
         <ButtonCustomDom
           disabled={this.props.disabled}
           onClick={this.props.onClick}

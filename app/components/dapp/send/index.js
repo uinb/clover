@@ -78,6 +78,7 @@ export default class Send extends Component {
               width="155px"
               color="primary"
               disabled={!!errorMessage}
+              className="button-sm-secondary"
             >
               SIGN
             </ButtonCustom>
