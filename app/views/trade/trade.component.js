@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { Find, IsEmpty } from 'react-lodash';
-import './styles.css';
-import Transaction from '../../components/transaction/transaction';
+import React, { Component } from "react";
+import { Find, IsEmpty } from "react-lodash";
+import "./styles.css";
+import Transaction from "../../components/transaction/transaction";
 import {
   DASHBOARD_PAGE,
   QR_CODE_PAGE,
   TRANSFER_PAGE,
   TRANSFER_STATUS_PAGE,
-} from '../../constants/navigation';
-import HeaderBack from '../../components/header-back';
-import ButtonCustom from '../../components/common/buttons/button-custom';
+} from "../../constants/navigation";
+import HeaderBack from "../../components/header-back";
+import ButtonCustom from "../../components/common/buttons/button-custom";
 
 export default class Trade extends Component {
   handleBack = () => {
@@ -30,7 +30,7 @@ export default class Trade extends Component {
     this.props.changePage(QR_CODE_PAGE);
   };
 
-  checkTransactionDetail = selectTransaction => {
+  checkTransactionDetail = (selectTransaction) => {
     this.props.updateSelectedTransaction(selectTransaction);
     this.props.changePage(TRANSFER_STATUS_PAGE);
   };
@@ -49,9 +49,9 @@ export default class Trade extends Component {
                 <div className="trade-amount">
                   <Find
                     collection={balance.tokens}
-                    predicate={token => token.token === selectedToken}
+                    predicate={(token) => token.token === selectedToken}
                   >
-                    {token => token.amount}
+                    {(token) => token.amount}
                   </Find>
                 </div>
                 <span className="trade-conversion-value">≈$0</span>
@@ -66,9 +66,9 @@ export default class Trade extends Component {
                   <span>
                     <Find
                       collection={balance.tokens}
-                      predicate={token => token.token === selectedToken}
+                      predicate={(token) => token.token === selectedToken}
                     >
-                      {token => token.amount}
+                      {(token) => token.amount}
                     </Find>
                   </span>
                 </li>
@@ -80,22 +80,32 @@ export default class Trade extends Component {
               <Transaction
                 className="transaction-container"
                 checkTransactionDetail={this.checkTransactionDetail}
-                transactions={transactions.filter(t => t.metadata.token === selectedToken)}
+                transactions={transactions.filter(
+                  (t) => t.metadata.token === selectedToken
+                )}
               />
               <div
                 style={{
-                  position: 'absolute',
-                  bottom: '11px',
-                  right: '20px',
-                  left: '20px',
-                  justifyContent: 'space-between',
-                  display: 'flex',
+                  position: "absolute",
+                  bottom: "11px",
+                  right: "20px",
+                  left: "20px",
+                  justifyContent: "center",
+                  display: "flex",
                 }}
               >
-                <ButtonCustom onClick={this.handleDeposit} width="100px">
+                <ButtonCustom
+                  onClick={this.handleDeposit}
+                  width="100px"
+                  className="button-sm-primary"
+                >
                   RECEIVE
                 </ButtonCustom>
-                <ButtonCustom onClick={this.handleSend} width="100px">
+                <ButtonCustom
+                  onClick={this.handleSend}
+                  width="100px"
+                  className="button-sm-primary"
+                >
                   SEND
                 </ButtonCustom>
               </div>

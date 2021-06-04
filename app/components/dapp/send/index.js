@@ -70,13 +70,16 @@ export default class Send extends Component {
           )}
 
           <div className="connect-request-button-wrap">
-            <ButtonCustom onClick={onCancel} width="155px" color="default">
+            <ButtonCustom
+              onClick={onCancel}
+              width="155px"
+              className="button-sm-primary"
+            >
               CANCEL
             </ButtonCustom>
             <ButtonCustom
               onClick={onAllow}
               width="155px"
-              color="primary"
               disabled={!!errorMessage}
               className="button-sm-secondary"
             >

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import FusoInput from '../../common/input';
-import FooterButton from '../../common/footer-button';
-import './styles.css';
+import React, { Component } from "react";
+import FusoInput from "../../common/input";
+import FooterButton from "../../common/footer-button";
+import "./styles.css";
 
 export default class CreateContactForm extends Component {
   render() {
@@ -28,7 +28,6 @@ export default class CreateContactForm extends Component {
           placeholderText="Input or paste address here"
           value={address}
           error={isAddressError}
-          label="Address"
           name={addressPropName}
           onChange={handleToChange(addressPropName)}
           inputRef={addressInputRef}
@@ -39,7 +38,6 @@ export default class CreateContactForm extends Component {
           className="sign-up-password contact-fname-input"
           value={fname}
           onChange={handleFnameChange(fnamePropName)}
-          label={fnameLabel}
           error={isFnameError}
           name={fnamePropName}
           inputRef={fnameInputRef}

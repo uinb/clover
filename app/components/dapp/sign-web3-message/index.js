@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import RequestType from '../request-type';
-import WalletExpansionPanel from '../../common/wallet-expansion-panel';
+import WalletExpansionPanel from "../../common/wallet-expansion-panel";
 // import AccountItem from '../../account/account-item';
 // import DarkDivider from '../../common/divider/dark-divider';
-import './styles.css';
+import "./styles.css";
 // import ClickToCopy from '../../common/click-to-copy';
-import ButtonCustom from '../../common/buttons/button-custom';
+import ButtonCustom from "../../common/buttons/button-custom";
 
 // const Summary = props => (
 //   <div className={props.className}>
@@ -69,14 +69,17 @@ export default class SignWeb3Message extends Component {
           </div>
 
           <div className="connect-request-button-wrap">
-            <ButtonCustom onClick={onCancel} width="155px" color="#000000" background="white">
+            <ButtonCustom
+              onClick={onCancel}
+              width="155px"
+              className="button-sm-primary"
+            >
               CANCEL
             </ButtonCustom>
             <ButtonCustom
               onClick={onAllow}
               width="155px"
-              color="#FB822A"
-              background="white"
+              className="button-sm-primary"
               disabled={!!errorMessage}
             >
               SIGN
