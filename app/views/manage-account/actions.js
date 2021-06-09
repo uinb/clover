@@ -26,7 +26,7 @@ export const changeAccount = (account) => async (dispatch) => {
 export const removeAccount = (accountToRemove) => async (dispatch) => {
   try {
     const { address, alias } = accountToRemove;
-    await Account.removeAccount(address);
+    await Account.removeAccount(address, alias);
     AccountActions.fetchAndSetAccounts(dispatch);
     dispatch(createToast({ message: onRemoveAccount(alias), type: "success" }));
   } catch (e) {

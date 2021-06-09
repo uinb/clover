@@ -193,32 +193,19 @@ export const updateCurrentAccount = async (address) => {
   throw new Error("account is not avalible");
 };
 
-export const removeAccount = async (address) => {
+export const removeAccount = async (address, alias) => {
   // get privious accounts
-  const { accounts, currentAccount } = getAccountState();
+  const { accounts } = getAccountState();
   const filteredAccounts = accounts.filter((obj) => {
-    const accountAddress = getAddress(obj.seedWords, obj.keypairType);
-    if (accountAddress !== address) {
+    if (obj.alias !== alias) {
       return obj;
     }
   });
   // update reducer state
   await updatesAccountsState(filteredAccounts);
-  const currentAccountAddress = getAddress(
-    currentAccount.seedWords,
-    currentAccount.keypairType
-  );
-  if (address === currentAccountAddress) {
-    const accountIndex = accounts.findIndex((obj) => {
-      const accountAddress = getAddress(obj.seedWords, obj.keypairType);
-      return accountAddress === address;
-    });
-    if (accountIndex === accounts.length - 1) {
-      await updateCurrentAccountState(filteredAccounts[0]);
-    } else {
-      await updateCurrentAccountState(accounts[accountIndex + 1]);
-    }
-  }
+
+  const fullChainAccounts = getFullChainAccounts(filteredAccounts);
+  await updatesFullChainAccountsState(fullChainAccounts);
   return true;
 };
 

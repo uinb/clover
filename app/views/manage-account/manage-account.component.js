@@ -5,8 +5,6 @@ import HeaderBack from "../../components/header-back";
 import { getChainLogo } from "../../utils/chain";
 import ChainCard from "../../components/chain-card";
 import AddAccountIcon from "../../images/add_account_icon.svg";
-import { changeAccount } from "../manage-account/actions";
-
 export default class ManageAccount extends Component {
   constructor(props) {
     super(props);
@@ -42,23 +40,15 @@ export default class ManageAccount extends Component {
     });
   };
   accountClicked = async (account, network) => {
-    this.handleClose();
-    try {
-      await this.props.switchNetwork(network);
-      this.props.changeAccount(account);
-    } catch (e) {
-      this.props.updateAppLoading(false);
-      this.props.createToast({
-        message: `Failed to connect ${network.unit} chain...`,
-        type: "error",
-      });
-    }
+    // this.props.changeAccount(account);
+    // console.log(account, this.props.account);
   };
+  dotClick = async (account, network) => {};
   handleClose = () => {
     this.props.changePage(this.props.backupPage);
   };
   render() {
-    const { fullChainAccounts } = this.props;
+    const { fullChainAccounts, removeAccount, account } = this.props;
     const { chain, networks } = this.state;
     return (
       <div className="container">
@@ -100,12 +90,15 @@ export default class ManageAccount extends Component {
             {fullChainAccounts.map((fullChainAccount, netIdx) =>
               fullChainAccount.accounts.map((acc, accIdx) => (
                 <ChainCard
+                  showDot={true}
                   account={acc}
+                  currentAccount={account}
                   network={networks.find(
                     (net) => net.unit === fullChainAccount.symbol
                   )}
                   key={`card_logo_${netIdx.toString()}_${accIdx.toString()}`}
                   accountClicked={this.accountClicked}
+                  removeAccount={removeAccount}
                 />
               ))
             )}

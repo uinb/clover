@@ -25,15 +25,6 @@ export const updateKeypairType = (keypairType) => ({
   keypairType,
 });
 
-export const updateAccountAliasSuccess = () => ({
-  type: CreateAccountActionTypes.ACCOUNT_ALIAS_UPDATE_SUCCESS,
-});
-
-export const updateAccountAliasError = (aliasError) => ({
-  type: CreateAccountActionTypes.ACCOUNT_ALIAS_UPDATE_ERROR,
-  aliasError,
-});
-
 export const setAndStartOnBoarding = () => async (dispatch) => {
   await OnBoarding.setIsAppOnBoarded();
   await dispatch(onBoard());

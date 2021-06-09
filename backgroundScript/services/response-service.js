@@ -550,8 +550,8 @@ export const updateCurrentAccount = async (request, sendResponse) => {
 export const removeAccount = async (request, sendResponse) => {
   try {
     // seedWords is not define its automatically create wallet using new seedwords
-    const { address } = request;
-    const isAccountRemoved = await AccountService.removeAccount(address);
+    const { address, alias } = request;
+    const isAccountRemoved = await AccountService.removeAccount(address, alias);
     sendResponse({ ...success, result: isAccountRemoved });
   } catch (err) {
     sendResponse({ ...failure, message: "Error while removing account." });
@@ -595,4 +595,9 @@ export const setNodes = async (request, sendResponse) => {
   } catch (e) {
     sendResponse({ ...failure, message: "Error in setting nodes." });
   }
+};
+export const handledAppDefault = async (request, sendResponse) => {
+  sendResponse({
+    message: "default message",
+  });
 };

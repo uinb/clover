@@ -71,10 +71,11 @@ export const updateCurrentAccount = async (address) => {
   return result;
 };
 
-export const removeAccount = async (address) => {
+export const removeAccount = async (address, alias) => {
   const { message, status, result } = await sendMessage({
     type: MessageTypes.BG_ACCOUNTS_REMOVE_ACCOUNT,
     address,
+    alias,
   });
   throwIfNoSuccess({ message, status });
   return { result };

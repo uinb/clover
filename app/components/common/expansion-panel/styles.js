@@ -19,9 +19,12 @@ export const styles = () => ({
     padding: "0px 0px",
   },
   summaryRoot: {
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "center",
+    lineHeight: "32px",
     padding: 0,
     minHeight: 0,
-    paddingBottom: "10px",
     borderBottom: "1px solid rgba(0, 0, 0, 0.05)",
     "&$expanded": {
       margin: 0,
@@ -32,6 +35,7 @@ export const styles = () => ({
     padding: 0,
     right: 0,
     color: "black",
+    marginRight: 0,
   },
   panelExpanded: {
     margin: 0,
