@@ -77,6 +77,7 @@
     "@polkadot/api": "4.4.1",
     "@polkadot/extension-inject": "^0.37.2",
     "@polkadot/react-identicon": "^0.76.1",
+    "@polkadot/ui-keyring": "^0.79.1",
     "@polkadot/util": "^6.3.1",
     "@polkadot/util-crypto": "^6.3.1",
     "@types/react": "^17.0.6",

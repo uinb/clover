@@ -1,19 +1,20 @@
-import { keccak512 } from 'js-sha3';
-import * as APITypes from '../../api';
-import * as SignInActionTypes from './action-types';
-import * as APIConstants from '../../../lib/constants/api';
-import { updateAppLoading } from '../../containers/actions';
+import { keccak512 } from "js-sha3";
+import * as APITypes from "../../api";
+import * as SignInActionTypes from "./action-types";
+import * as APIConstants from "../../../lib/constants/api";
+import { updateAppLoading } from "../../containers/actions";
 
 const unlockWalletSuccess = () => ({
   type: SignInActionTypes.UNLOCK_WALLET_SUCCESS,
 });
 
-const unlockWalletError = error => ({
+const unlockWalletError = (error) => ({
   type: SignInActionTypes.UNLOCK_WALLET_ERROR,
   error,
 });
 
-export const unlockWallet = password => async dispatch => {
+export const unlockWallet = (password) => async (dispatch) => {
+  debugger;
   try {
     dispatch(updateAppLoading(true));
     await APITypes.OnBoarding.setHashKey(keccak512(password));
@@ -26,7 +27,8 @@ export const unlockWallet = password => async dispatch => {
     };
     switch (e.code) {
       case APIConstants.FAILURE:
-        error.message = password !== '' ? 'Incorrect password' : 'Password is required';
+        error.message =
+          password !== "" ? "Incorrect password" : "Password is required";
         break;
       default:
     }

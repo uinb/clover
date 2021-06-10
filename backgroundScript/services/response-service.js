@@ -53,6 +53,7 @@ export const isAppReady = async (request, sendResponse) => {
 
 export const setHashKey = async (request, sendResponse) => {
   try {
+    debugger;
     const { data } = request;
     const hashKey = await AppService.appReady(data);
     if (hashKey !== undefined) {

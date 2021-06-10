@@ -6,6 +6,7 @@ import { MoreVert } from "@material-ui/icons";
 import { Popover } from "@material-ui/core";
 import classnames from "classnames";
 import { Button, Dialog, DialogActions, DialogTitle } from "@material-ui/core/";
+import keyring from "@polkadot/ui-keyring";
 import "./styles.less";
 export default class ChainCard extends Component {
   constructor() {
@@ -39,15 +40,17 @@ export default class ChainCard extends Component {
       this.handleConfirmClose();
     }
   };
-  handleAccountOption = (action, account) => {
+  handleAccountOption = (action) => {
+    let { currentAccount, account } = this.props;
     switch (action) {
       case "forget":
-        let { currentAccount, account } = this.props;
         if (currentAccount.alias === account.alias) {
           return;
         }
         this.setState({ open: true });
         break;
+      case "export":
+        keyring.backupAccount(keyring.getPair(account.address), password);
       default:
         return;
     }
@@ -95,11 +98,17 @@ export default class ChainCard extends Component {
               >
                 <ul className="account-options">
                   <li>Rename</li>
-                  <li>Export Account</li>
+                  <li
+                    onClick={() => {
+                      this.handleAccountOption("export");
+                    }}
+                  >
+                    Export Account
+                  </li>
                   <li
                     className={classes}
                     onClick={() => {
-                      this.handleAccountOption("forget", account);
+                      this.handleAccountOption("forget");
                     }}
                   >
                     Forget Account
