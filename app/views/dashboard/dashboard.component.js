@@ -67,6 +67,7 @@ export default class Dashboard extends Component {
           className="wallet-container"
           inputRef={this.textInput}
           selectedAccount={account}
+          assetsList={assetsList}
           theme={theme}
           onAliasChange={this.handleAliasChange}
           onAliasInputBlur={this.handleAliasInputBlur}
@@ -133,7 +134,7 @@ class AssetsList extends React.Component {
           <span>{this.props.assetInfo.token}</span>
         </div>
         <div className="asset-list-right">
-          <span>{this.props.assetInfo.amount}</span>
+          <span>{this.props.assetInfo.taoTotal}</span>
           <img src={ArrowRight} alt="" />
         </div>
       </div>

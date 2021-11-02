@@ -14,7 +14,6 @@ const unlockWalletError = (error) => ({
 });
 
 export const unlockWallet = (password) => async (dispatch) => {
-  debugger;
   try {
     dispatch(updateAppLoading(true));
     await APITypes.OnBoarding.setHashKey(keccak512(password));

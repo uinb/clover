@@ -20,6 +20,7 @@ export default class AccountPanel extends Component {
     const { anchorEl } = this.state;
     const {
       selectedAccount,
+      assetsList,
       onCopyAddress,
       onAccountMenuOptionsChange,
       accountMenu,
@@ -35,6 +36,7 @@ export default class AccountPanel extends Component {
           className="account-detail"
           address={selectedAccount.address}
           alias={selectedAccount.alias}
+          assetsList={assetsList}
           onCopyAddress={onCopyAddress}
           inputRef={inputRef}
           editMode={selectedAccount.editMode ? selectedAccount.editMode : false}

@@ -29,6 +29,9 @@ export const onBoard = () => async dispatch => {
       case APIConstants.UNAUTHORIZED:
         dispatch(AppActions.changePage(NavConstants.SIGN_IN_PAGE));
         break;
+      case APIConstants.FAILURE:
+        dispatch(AppActions.changePage(NavConstants.SIGN_IN_PAGE));
+        break;
       case APIConstants.BAD_REQUEST:
         dispatch(AppActions.changePage(NavConstants.SIGN_UP_PAGE));
         break;

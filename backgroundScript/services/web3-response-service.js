@@ -6,7 +6,8 @@ import * as DAppService from './dapp-service';
 import { getStore } from '../store/store-provider';
 import * as TransactionService from './transaction-service';
 
-const baseUrl = 'wss://test-fuso.ngnexusccs.xyz';
+const baseUrl = 'wss://whisky.fusotao.org';
+//wss://whisky.fusotao.org
 const web3 = new Web3(baseUrl);
 // use below messages if no return message is needed
 export const success = {

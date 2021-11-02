@@ -51,18 +51,25 @@ export default class Trade extends Component {
                     collection={balance.tokens}
                     predicate={(token) => token.token === selectedToken}
                   >
-                    {(token) => token.amount}
+                    {(token) => token.taoTotal}
                   </Find>
                 </div>
-                <span className="trade-conversion-value">≈$0</span>
+                {/* <span className="trade-conversion-value">≈$0</span> */}
               </div>
               <ul className="locked-available-retain-wrapper">
                 <li>
-                  <p>Locked</p>
-                  <span>0</span>
+                  <p>Reserved</p>
+                  <span>
+                    <Find
+                      collection={balance.tokens}
+                      predicate={(token) => token.token === selectedToken}
+                    >
+                      {(token) => token.reserved}
+                    </Find>
+                  </span>
                 </li>
                 <li>
-                  <p>Available</p>
+                  <p>Free</p>
                   <span>
                     <Find
                       collection={balance.tokens}
@@ -87,7 +94,7 @@ export default class Trade extends Component {
               <div
                 style={{
                   position: "absolute",
-                  bottom: "11px",
+                  bottom: "20px",
                   right: "20px",
                   left: "20px",
                   justifyContent: "center",
@@ -96,14 +103,14 @@ export default class Trade extends Component {
               >
                 <ButtonCustom
                   onClick={this.handleDeposit}
-                  width="100px"
+                  width="150px"
                   className="button-sm-primary"
                 >
                   RECEIVE
                 </ButtonCustom>
                 <ButtonCustom
                   onClick={this.handleSend}
-                  width="100px"
+                  width="150px"
                   className="button-sm-primary"
                 >
                   SEND

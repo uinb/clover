@@ -48,19 +48,28 @@ export const getBalance = async address => {
     const api = getApi();
     const { data } = await api.query.system.account(address);
     const balance = data.free.toString();
+    const reserved = data.reserved.toString();
+    // const totalAssets = (Number(data.free)+Number(data.reserved)).toString();
     const decimals = ChainApi.getTokenDecimals();
     const token = ChainApi.getTokenSymbol();
     formatBalance.setDefaults({ unit: token });
     const balanceFormatted = formatBalance(balance, true, decimals);
-    const taoBalance = formatBalance(balance, { forceUnit: token, withSi: true }, decimals);
+    const taoBalance = formatBalance(balance, { forceUnit: token, withSi: true }, decimals).replace(` ${token}`, '');
+    const taoReserved = formatBalance(reserved, { forceUnit: token, withSi: true }, decimals).replace(` ${token}`, '');
+    const totalAssets = Number(taoBalance.split(',').join("")) + Number(taoReserved.split(',').join(""));
+    const taoTotalAssets = thousands(totalAssets);
     const balanceObj = {
       address,
       tokens: [
         {
           token,
+          originalReserved:reserved.toString(),
+          reserved:taoReserved,
+          originalTaoTotal:totalAssets.toString(),
+          taoTotal:taoTotalAssets,
           balance: balance.toString(),
-          amount: taoBalance.replace(` ${token}`, ''),
-          marketData: '0',
+          amount: taoBalance,
+          marketData: '0.00',
           balanceFormatted,
         },
       ],
@@ -73,8 +82,9 @@ export const getBalance = async address => {
       tokens: [
         {
           token: 'TAO',
+          reserved:'--',
           balance: '0',
-          amount: '0',
+          amount: '--',
           marketData: '0',
           balanceFormatted: formatBalance('0', true, 18),
         },
@@ -112,3 +122,8 @@ export const getSignMessage = async (account, message) => {
 };
 
 export const getStringMessageFromHex = message => u8aToString(hexToU8a(message));
+function thousands(num){
+  var str = num.toString();
+  var reg = str.indexOf(".") > -1 ? /(\d)(?=(\d{3})+\.)/g : /(\d)(?=(?:\d{3})+$)/g;
+  return str.replace(reg,"$1,");
+}
